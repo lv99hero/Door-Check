@@ -1,0 +1,51 @@
+import sys
+import random
+
+def print_inventory(dct):
+    print("Items held:")
+    for item, amount in dct.items():  # dct.iteritems() in Python 2
+        print("{} ({})".format(item, amount))
+
+inventory = {
+    "Garbage Lid": 1,
+    "Wooden Sword": 1,
+    "Healing Herbs": 3,
+}
+
+
+
+###INV CHECK FOR YELLOW KEY###
+yellowkey = 1
+while yellowkey > 0:
+
+  door_check = input("You come to a yellow door.\nDo you choose to open it? (y/n)\nYou can also check your inventory. (inv) ")
+
+  if door_check == "y":
+
+    if "Yellow Key" in inventory.keys():
+
+      print("The door is open!")
+      
+      yellowkey = yellowkey - 1
+      
+  
+    else:
+    
+      print("This door does not open with the keys in your inventory.\nUpon looking around, you find a Yellow Key!")
+
+      inventory["Yellow Key"] = 1
+
+  elif door_check == "n":
+
+    print("You decide to stay your boring ass behind the door.")
+
+    sys.exit()
+
+  elif door_check == "inv":
+
+    print_inventory(inventory)
+  
+  else:
+
+    print("That's not a valid answer. Please just type y or n and proceed.")
+
